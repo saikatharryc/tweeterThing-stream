@@ -1,10 +1,14 @@
 const User = require("../../../models/user");
 
+module.exports = {
+    list
+};
+
 /* 
     GET /api/user/list
 */
 
-exports.list = (req, res) => {
+function list(req, res) {
     // refuse if not an admin
     if (!req.decoded.admin) {
         return res.status(403).json({
@@ -17,4 +21,4 @@ exports.list = (req, res) => {
         .then(users => {
             res.json({ users });
         });
-};
+}
