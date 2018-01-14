@@ -12,10 +12,10 @@ const io = require("socket.io").listen(server);
 const authMiddleware = require("./middlewares/auth");
 var tweet = io.of("tweet");
 var twit = new twitter({
-    consumer_key: "50d0PY6PfGVSjkOXUt1WcaCRt",
-    consumer_secret: "0ETOPni0cxoNujpRQOumFEVAoEpmerNEzUX8zPU7mXXTk1M1kt",
-    access_token_key: "3115230056-njkVQL37r0aGF07k6ZJsHGl7xjbDt0W7NAnj0mL",
-    access_token_secret: "Ecsej1mxfdTs5fsR4vGuJAyidSwLNWJl4QGikpuxmjGdD"
+    consumer_key: config.consumer_key,
+    consumer_secret: config.consumer_secret,
+    access_token_key: config.access_token_key,
+    access_token_secret: config.access_token_secret
 });
 
 /* =======================
