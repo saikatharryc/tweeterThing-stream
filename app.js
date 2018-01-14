@@ -9,10 +9,16 @@ if (cluster.isMaster) {
     for (var i = 0; i < cpuCount; i += 1) {
         cluster.fork();
     }
+
+    // Listen to dying workers
+    cluster.on("exit", function(worker) {
+        console.log("died worker id : %d", worker.id);
+        cluster.fork();
+    });
 } else {
     // Code to run if we're in a worker process
     const express = require("express");
-
+    const config = require("./config");
     const bodyParser = require("body-parser");
     const morgan = require("morgan");
     const mongoose = require("mongoose");
@@ -28,7 +34,7 @@ if (cluster.isMaster) {
         access_token_key: config.access_token_key,
         access_token_secret: config.access_token_secret
     });
-    const config = require("./config");
+
     const port = process.env.PORT || 3000;
 
     function handler(req, res) {
