@@ -27,7 +27,6 @@ if (cluster.isMaster) {
     const twitter = require("twitter");
     const io = require("socket.io").listen(server);
     const authMiddleware = require("./middlewares/auth");
-    var tweet = io.of("tweet");
     var twit = new twitter({
         consumer_key: config.consumer_key,
         consumer_secret: config.consumer_secret,
@@ -78,13 +77,13 @@ if (cluster.isMaster) {
     // open the server
     server.listen(port);
     console.log("Worker %d running!", cluster.worker.id);
-    /* =======================
-    CONNECT TO MONGODB SERVER
-    ==========================*/
+
     mongoose.connect(config.mongodbUri);
 
     const db = mongoose.connection;
-    db.on("error", console.error);
+    db.on("error", () => {
+        throw error;
+    });
     db.once("open", () => {
         console.log("connected to mongodb server");
     });
