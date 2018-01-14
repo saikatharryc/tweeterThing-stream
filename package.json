@@ -1,5 +1,5 @@
 {
-    "name": "TwitterThing-stream",
+    "name": "TwitterThingstream",
     "version": "1.0.0",
     "description": "twitter streaming api and with authenticated route",
     "main": "app.js",
