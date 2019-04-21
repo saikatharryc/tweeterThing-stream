@@ -1,5 +1,7 @@
 ## **SetUp:**
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/saikatharryc/tweeterThing-stream.svg)](https://greenkeeper.io/)
+
 Pull This repo `git clone https://github.com/saikatharryc/tweeterThing-stream.git`
 
 and the go to `tweeterThing-stream` folder .
